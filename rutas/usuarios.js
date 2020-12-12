@@ -7,8 +7,8 @@ const secretWord = "s3cr3tW0rd";
 
 //Funciones internas
 function validarUsuario(user, pwd){
-    return sql.query('SELECT id, username, tipousuario FROM usuarios WHERE (username = :username or correo = :username) and password = :pass', 
-         {  replacements:  {username : user, pass: pwd}, type : sql.QueryTypes.SELECT }
+    return sql.query('SELECT id, username, tipousuario FROM usuarios WHERE (username = :username) and password = :password', 
+         {  replacements:  {username : user, password: pwd}, type : sql.QueryTypes.SELECT }
      );
 }
 
@@ -65,9 +65,9 @@ const rolAdmin = (req, res, next) => {
 }
 
  route.post('/login', (req, res) =>{
-    const {username, pass} = req.body;
+    const {username, password} = req.body;
 
-    const validado = validarUsuario(username, pass).then(result => {
+    const validado = validarUsuario(username, password).then(result => {
         console.log();
         if(result.length == 0){
             res.json({error: "Usuario o contraseña incorrecta"});

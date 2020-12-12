@@ -31,3 +31,6 @@ sobre una estructura de datos que usuario puede consumir
   * Ejecutar los archivos desde shell con el comando "source nombreArchivo"
   
 4. Iniciar servidor ejecutando archivo: index.js o ejecutar comando "npm run start"
+
+5. Coleccion de Postman, para validar checklist del proyecto
+https://web.postman.co/workspace/My-Workspace~4555ca3a-47ff-4422-8617-bced41cbd902/request/12705593-ba3e8846-d81b-4abd-8c38-c794e6af4e3a

@@ -41,10 +41,10 @@ route.get("/", (req, res) => {
 
 route.post("/", (req, res) => {
     let productos = req.body;
-    sql.query('INSERT INTO platos(nombre, urlimagen, precio) VALUES (:nombre , :urlimagen, :precio)', 
+    sql.query('INSERT INTO platos(nombre, urlimagen, precio) VALUES (:nombre , :urlImagen, :precio)', 
         { replacements: {
                 nombre : productos.nombre,
-                urlimagen : productos.urlImagen,
+                urlImagen : productos.urlImagen,
                 precio : productos.precio
             } 
         }
@@ -56,11 +56,11 @@ route.post("/", (req, res) => {
 
 route.put("/", (req, res) => {
     let productos = req.body;
-    sql.query('UPDATE platos SET nombre = :nombre, urlimagen = :urlimagen, precio = :precio WHERE id = :id', 
+    sql.query('UPDATE platos SET nombre = :nombre, urlImagen = :urlImagen, precio = :precio WHERE id = :id', 
         { replacements: {
                 id : productos.id,
                 nombre : productos.nombre,
-                urlimagen : productos.urlImagen,
+                urlImagen : productos.urlImagen,
                 precio : productos.precio
             } 
         }

@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const route = express.Router();
 const secretWord = "s3cr3tW0rd";
 var usuarioId;
-//Funciones internas
+//Validacion de usuario
 const validateUser = (req, res, next) => {
     try{
         
@@ -19,7 +19,7 @@ const validateUser = (req, res, next) => {
         }
 
     }catch(err){
-        res.json({error: "Error al validar usuario"});
+        res.json({error: "Error validando usuario HEY"});
     }
 }
 
@@ -41,7 +41,7 @@ const rolAdmin = (req, res, next) => {
         }
 
     }catch(err){
-        res.json({error: "Error al validar usuario"});
+        res.json({error: "Error validando usuario"});
     }
 }
 
@@ -64,9 +64,11 @@ const checkMyInfo = (req, res, next) =>{
         }
 
     }catch(err){
-        res.json({error: "Error al validar usuario"});
+        res.json({error: "Error validando usuario"});
     }
 }
+
+// validacion de rutas 
 
 route.use(validateUser);
 
@@ -90,9 +92,9 @@ function insertarPedidodetalle(pedidoId, platos){
 route.post("/", (req, res) => {
     const pedido = req.body.pedido;
     const platos = req.body.platos;
-    const registrado = insertarPedido(pedido).then(result => {
+    const pedidoRegistrado = insertarPedido(pedido).then(result => {
         const pedidodetalle = insertarPedidodetalle(result[0], platos).then(resultDetail =>{
-            res.send("Pedido creado correctamente");
+            res.send("Se creo un pedido correctamente");
         }).catch(error => console.log(error));
     }).catch(error => console.log(error));
 
