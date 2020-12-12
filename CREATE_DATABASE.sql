@@ -1,4 +1,4 @@
--- Creacion de la base de datos, si no existe.
+-- Creacion de la base de datos, si no existe.API
 CREATE DATABASE IF NOT EXISTS delilahresto;
 
 -- Usando la base de datos

@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const route = express.Router();
 const secretWord = "s3cr3tW0rd";
 var usuarioId;
-//Validacion de usuario
+//Validacion de usuario API
 const validateUser = (req, res, next) => {
     try{
         

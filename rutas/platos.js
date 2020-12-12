@@ -5,7 +5,7 @@ const secretWord = "s3cr3tW0rd";
 const route = express.Router();
 
 
-// Validar jwt
+// Validar jwt API
 
 const rolesAdmin = (req, res, next) => {
     try{

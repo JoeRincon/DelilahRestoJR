@@ -5,7 +5,7 @@ servers:
 info:
   title: Backend API Delilah Resto
   version: 1.0.0
-  description: Proyecto Backend API manejo de ordenes para restaurant
+  description: Proyecto Backend API manejo de ordenes para restaurant acamica
   contact:
     email: joe.rincong@gmail.com
     name: Jorge Rincon

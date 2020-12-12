@@ -1,4 +1,4 @@
-// Set Dependencias
+// Set Dependencias API
 const express = require('express');
 const bodyParser = require('body-parser');
 const platos = require('./rutas/platos');

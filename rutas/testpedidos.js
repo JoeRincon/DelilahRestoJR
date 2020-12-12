@@ -19,7 +19,7 @@ route.post ('/', (req, res)=> {
     }).catch (error => console.log (error));
 });
 
-
+//ruta pruebas
 
 
 module.exports = route;

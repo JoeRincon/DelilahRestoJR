@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const route = express.Router();
 const secretWord = "s3cr3tW0rd";
 
-//Funciones internas
+//Funciones internas API
 function validarUsuario(user, pwd){
     return sql.query('SELECT id, username, tipousuario FROM usuarios WHERE (username = :username) and password = :password', 
          {  replacements:  {username : user, password: pwd}, type : sql.QueryTypes.SELECT }
