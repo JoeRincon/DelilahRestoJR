@@ -35,7 +35,10 @@ sobre una estructura de datos que usuario puede consumir
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/a32e5de66317371673ad)
 
-Coleccion tambien esta disponible como archivo tipo JSON
 ver en la web >> https://web.postman.co/collections/12705593-98d1d454-aa53-45e3-b534-1c381975ae74?workspace=4555ca3a-47ff-4422-8617-bced41cbd902
+
+** Coleccion tambien esta disponible como archivo tipo JSON
+
+https://www.getpostman.com/collections/a32e5de66317371673ad
 
 
