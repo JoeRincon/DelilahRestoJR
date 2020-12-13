@@ -1,0 +1,650 @@
+{
+	"info": {
+		"_postman_id": "98d1d454-aa53-45e3-b534-1c381975ae74",
+		"name": "API  Delilah Resto Checklist Proyecto",
+		"description": "Contiene los diferentes validaciones pedidas para el proyecto Dellilah Resto Acamica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Usuario - Test no borra plato",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MiwidXNlcm5hbWUiOiJwcGVyZXoiLCJ0aXBvdXN1YXJpbyI6IlUifV0sImlhdCI6MTYwNzU1NTYzMX0.Wsq92_Ld-UvmTbc__mT-W5fN3oV3bC1ok5oCSl9xVSo"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/platos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"platos",
+								"1"
+							]
+						},
+						"description": "Test para validar que un usuario notmal no puede borrar un plato"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario - Login validacion  (token)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"pperez\",\r\n    \"password\": \"pepe123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuarios/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"login"
+							]
+						},
+						"description": "Valida la existencia de un usuario registrado y devuelve un token.\r\n\r\nTOKEN GENERADO\r\n\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MiwidXNlcm5hbWUiOiJwcGVyZXoiLCJ0aXBvdXN1YXJpbyI6IlUifV0sImlhdCI6MTYwNzU1NTYzMX0.Wsq92_Ld-UvmTbc__mT-W5fN3oV3bC1ok5oCSl9xVSo\"\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario - Consulta de los platos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MywidXNlcm5hbWUiOiJtYXJtb2wiLCJ0aXBvdXN1YXJpbyI6IlUifV0sImlhdCI6MTYwNzY0NzAyMH0.-KA7_5TB_O0x6hP2C2bEoAS5ckWmO0GH8_PpmHp-vHo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/platos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"platos"
+							]
+						},
+						"description": "Devuelve la consulta de los platos disponibles de la tabla platos. \r\n\r\nRequiere verificacion de token\r\nEn HEADER contenga\r\nKEY : Authorization\r\nVALUE : Bearer + Token que otorgo el registro\r\n\r\nEj. Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MiwidXNlcm5hbWUiOiJwcGVyZXoiLCJ0aXBvdXN1YXJpbyI6IlUifV0sImlhdCI6MTYwNzU3NDUyNX0.IMw7GyFZD8BauQhYqyVcup7SPYGpTJCxLZR4IAqmpcE"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario - Crear un pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MywidXNlcm5hbWUiOiJtYXJtb2wiLCJ0aXBvdXN1YXJpbyI6IlUifV0sImlhdCI6MTYwNzY0NzAyMH0.-KA7_5TB_O0x6hP2C2bEoAS5ckWmO0GH8_PpmHp-vHo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"estado\": \"nuevo\",\r\n    \"usuarioId\": \"4\",\r\n    \"mediodepagoId\": \"2\",\r\n    \"platos\": [\r\n        {\r\n            \"platosId\": \"2\"\r\n        },\r\n        {\r\n            \"platosId\": \"4\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pedidos"
+							]
+						},
+						"description": "Genera para un usuario registrado un pedido nuevo"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario - Test no actualiza platos",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MiwidXNlcm5hbWUiOiJwcGVyZXoiLCJ0aXBvdXN1YXJpbyI6IlUifV0sImlhdCI6MTYwNzU1NTYzMX0.Wsq92_Ld-UvmTbc__mT-W5fN3oV3bC1ok5oCSl9xVSo"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"9\",\r\n    \"nombre\": \"Ajiaco con Premium\",\r\n    \"urlImagen\": \"lol\",\r\n    \"precio\": \"80\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/platos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"platos"
+							]
+						},
+						"description": "Cambia el estado de un pedido"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario - Test no crea plato",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MiwidXNlcm5hbWUiOiJwcGVyZXoiLCJ0aXBvdXN1YXJpbyI6IlUifV0sImlhdCI6MTYwNzU1NTYzMX0.Wsq92_Ld-UvmTbc__mT-W5fN3oV3bC1ok5oCSl9xVSo"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Bandeja Paisa\",\r\n    \"urlImagen\": \"/image/prod-106\",\r\n    \"precio\": \"20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pedidos"
+							]
+						},
+						"description": "Cambia el estado de un pedido"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario - Test no acceso a usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MiwidXNlcm5hbWUiOiJwcGVyZXoiLCJ0aXBvdXN1YXJpbyI6IlUifV0sImlhdCI6MTYwNzU1NTYzMX0.Wsq92_Ld-UvmTbc__mT-W5fN3oV3bC1ok5oCSl9xVSo"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios"
+							]
+						},
+						"description": "El administrador lista todos los usuarios registrados"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario - Test no borra pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MiwidXNlcm5hbWUiOiJwcGVyZXoiLCJ0aXBvdXN1YXJpbyI6IlUifV0sImlhdCI6MTYwNzU1NTYzMX0.Wsq92_Ld-UvmTbc__mT-W5fN3oV3bC1ok5oCSl9xVSo"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pedidos/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pedidos",
+								"2"
+							]
+						},
+						"description": "Test para validar que un usuario no puede borrar un pedido"
+					},
+					"response": []
+				}
+			],
+			"description": "Rutas posibles para un usuario y validaciones de rutas que el usuario no puede realizar",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin - Login validacion  (token)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuarios/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"login"
+							]
+						},
+						"description": "Valida la existencia de un usuario registrado y devuelve un token.\r\n\r\nTOKEN GENERADO\r\neyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInRpcG91c3VhcmlvIjoiQSJ9XSwiaWF0IjoxNjA3NzIxMjIyfQ.T81CGFR2ExhfnDHmq03Ly-B8oU5KqQjCmxE-0FvsTx8\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Consulta de los platos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInRpcG91c3VhcmlvIjoiQSJ9XSwiaWF0IjoxNjA3NzIxMjIyfQ.T81CGFR2ExhfnDHmq03Ly-B8oU5KqQjCmxE-0FvsTx8"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/platos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"platos"
+							]
+						},
+						"description": "Devuelve la consulta de los platos disponibles de la tabla platos. \r\n\r\nRequiere verificacion de token\r\nEn HEADER contenga\r\nKEY : Authorization\r\nVALUE : Bearer + Token que otorgo el registro\r\n\r\nEj. Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MiwidXNlcm5hbWUiOiJwcGVyZXoiLCJ0aXBvdXN1YXJpbyI6IlUifV0sImlhdCI6MTYwNzU3NDUyNX0.IMw7GyFZD8BauQhYqyVcup7SPYGpTJCxLZR4IAqmpcE"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Cambiar el estado pedido",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInRpcG91c3VhcmlvIjoiQSJ9XSwiaWF0IjoxNjA3NzIxMjIyfQ.T81CGFR2ExhfnDHmq03Ly-B8oU5KqQjCmxE-0FvsTx8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"2\",\r\n    \"estado\": \"rechazado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pedidos"
+							]
+						},
+						"description": "Cambia el estado de un pedido"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Crear un plato nuevo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInRpcG91c3VhcmlvIjoiQSJ9XSwiaWF0IjoxNjA3NzIxMjIyfQ.T81CGFR2ExhfnDHmq03Ly-B8oU5KqQjCmxE-0FvsTx8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Ajiaco\",\r\n    \"urlImagen\": \"/image/prod-106\",\r\n    \"precio\": \"18\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/platos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"platos"
+							]
+						},
+						"description": "Cambia el estado de un pedido"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Actualizar un plato",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInRpcG91c3VhcmlvIjoiQSJ9XSwiaWF0IjoxNjA3NzIxMjIyfQ.T81CGFR2ExhfnDHmq03Ly-B8oU5KqQjCmxE-0FvsTx8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"7\",\r\n    \"nombre\": \"Ajiaco con Pollo\",\r\n    \"urlImagen\": \"/image/prod-106\",\r\n    \"precio\": \"25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/platos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"platos"
+							]
+						},
+						"description": "Cambia el estado de un pedido"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Borrar un plato",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInRpcG91c3VhcmlvIjoiQSJ9XSwiaWF0IjoxNjA3NzIxMjIyfQ.T81CGFR2ExhfnDHmq03Ly-B8oU5KqQjCmxE-0FvsTx8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/platos/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"platos",
+								"5"
+							]
+						},
+						"description": "Cambia el estado de un pedido"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Borrar un pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInRpcG91c3VhcmlvIjoiQSJ9XSwiaWF0IjoxNjA3NzIxMjIyfQ.T81CGFR2ExhfnDHmq03Ly-B8oU5KqQjCmxE-0FvsTx8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pedidos/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pedidos",
+								"2"
+							]
+						},
+						"description": "Cambia el estado de un pedido"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Consulta usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInRpcG91c3VhcmlvIjoiQSJ9XSwiaWF0IjoxNjA3NzIxMjIyfQ.T81CGFR2ExhfnDHmq03Ly-B8oU5KqQjCmxE-0FvsTx8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": ""
+						},
+						"description": "El administrador lista todos los usuarios registrados"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Consulta usuarios x ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInRpcG91c3VhcmlvIjoiQSJ9XSwiaWF0IjoxNjA3NzIxMjIyfQ.T81CGFR2ExhfnDHmq03Ly-B8oU5KqQjCmxE-0FvsTx8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuarios/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "El administrador lista todos los usuarios registrados"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Consulta total pedidos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInRpcG91c3VhcmlvIjoiQSJ9XSwiaWF0IjoxNjA3NzIxMjIyfQ.T81CGFR2ExhfnDHmq03Ly-B8oU5KqQjCmxE-0FvsTx8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pedidos"
+							]
+						},
+						"description": "Administrador puede consultar todos los pedidos "
+					},
+					"response": []
+				}
+			],
+			"description": "Rutas posibles para un administrador",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "General - Registrar un usuario Nvo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"nombres\": \"Pablo marmol\",\r\n   \"correo\": \"pablo@gmail.com\",\r\n   \"username\": \"marmol\",\r\n   \"password\": \"mar123\",\r\n   \"direccion\": \"av boyaca\",\r\n   \"telefono\": \"9999999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/registrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"registrar"
+					]
+				},
+				"description": "Registra un nuevo usuario en la tabla usuarios con todos sus parametros\r\n\r\nSe creo previamente el usuario tipo A = administrador"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

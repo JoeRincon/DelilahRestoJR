@@ -75,26 +75,36 @@ route.use(validateUser);
 function insertarPedido(pedido){
     var fecha = new Date();
     return sql.query("INSERT INTO pedidos (hora, estado, usuarioId, mediodepagoId) values(?,?,?,?)", 
-        {  replacements: [fecha, pedido.estado, usuarioId, pedido.mediodepagoId]}
+        {  replacements: [fecha, pedido.estado, pedido.usuarioId, pedido.mediodepagoId]}
     );
 }
 
-function insertarPedidodetalle(pedidoId, platos){
-    let platosArr = [];
-    for (let index = 0; index < platos.length; index++) {
-        platosArr.push("(" + platos[index] +"," + pedidoId +")");
+async function insertarPedidodetalle(pedidoId, platos){
+ 
+    try {
+        const queries = platos.map((plato)=>{
+          var query = "INSERT INTO pedidosdetalle (platosId, pedidosId) VALUES " + "(" + plato.platosId +"," + pedidoId +")";
+          return sql.query(query);
+        }
+ )
+    await Promise.all(queries);
+    return true;
+    } catch (error) {
+     console.log(error) 
+     return false  
     }
-    var query = "INSERT INTO pedidosdetalle (platosId, pedidosId) VALUES " + platosArr.join(", ");
-    return sql.query(query);
 }
 
 
 route.post("/", (req, res) => {
-    const pedido = req.body.pedido;
+    const pedido = req.body;
     const platos = req.body.platos;
     const pedidoRegistrado = insertarPedido(pedido).then(result => {
         const pedidodetalle = insertarPedidodetalle(result[0], platos).then(resultDetail =>{
-            res.send("Se creo un pedido correctamente");
+            if (resultDetail) {res.status(200).send("Se creo un pedido correctamente")}
+            else {
+                res.status(401).send("no se pudo crear pedido");
+            }
         }).catch(error => console.log(error));
     }).catch(error => console.log(error));
 
@@ -110,7 +120,7 @@ route.get("/", rolAdmin, (req, res) => {
 
 route.get("/usuario/:id/pedidos", checkMyInfo, (req, res) => {
     const userId = req.params.id;
-    sql.query('SELECT * FROM pedidos p inner join pedidosdetalle pd on p.id = pd.pedidosId WHERE p.usuarioId = 1', 
+    sql.query('SELECT * FROM pedidos p inner join pedidosdetalle pd on p.id = pd.pedidosId WHERE p.usuarioId = userId', 
         {replacements : {id: userId}, type : sql.QueryTypes.SELECT }
     ).then(result =>{
         res.json(result);
