@@ -15,7 +15,7 @@ sobre una estructura de datos que usuario puede consumir
 <h1>Documentacion</h1>
 
 * https://editor.swagger.io/
-* archivo docsAPI_Resto.yaml
+* archivo Docs.yaml
 
 <h1>Instalacion</h1>
 
@@ -33,6 +33,9 @@ sobre una estructura de datos que usuario puede consumir
 
 5. Coleccion de Postman, para validar checklist del proyecto API
 
-[Colección de Postman] (https://www.getpostman.com/collections/a32e5de66317371673ad)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/a32e5de66317371673ad)
+
+Coleccion tambien esta disponible como archivo tipo JSON
+ver en la web >> https://web.postman.co/collections/12705593-98d1d454-aa53-45e3-b534-1c381975ae74?workspace=4555ca3a-47ff-4422-8617-bced41cbd902
 
 
